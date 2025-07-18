@@ -1,7 +1,3 @@
-Absolutely! Here's the updated **README** with a **🔗 Resources** section added at the end, including the [Gemini API documentation](https://ai.google.dev/gemini-api/docs/models):
-
----
-
 # 🤖 Build with AI — Simple Q\&A Application
 
 This project demonstrates how to build a simple **Question & Answer** application powered by **Google Gemini models** using the **LangChain** framework and other powerful tools for natural language processing, document handling, and vector search.
