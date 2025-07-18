@@ -1,4 +1,4 @@
-# 🤖 Build with AI — Simple Q\&A Application
+# 🤖 Build with AI — Simple Harry Potter Q&A Application
 
 This project demonstrates how to build a simple **Question & Answer** application powered by **Google Gemini models** using the **LangChain** framework and other powerful tools for natural language processing, document handling, and vector search.
 
