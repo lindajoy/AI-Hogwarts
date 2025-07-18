@@ -55,48 +55,22 @@ class HarryPotterRAG:
 
     def load_documents(self) -> List[Document]:
         """Load documents from the data directory"""
-        loader = DirectoryLoader(self.data_path, glob="**/*.md")
-        documents = loader.load()
-        print(f"Loaded {len(documents)} documents from {self.data_path}")
-        return documents
+        # add code to load documents
+        pass
 
     def split_documents(self, documents: List[Document]) -> List[Document]:
         """Split documents into chunks"""
-        text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=CHUNK_SIZE,
-            chunk_overlap=CHUNK_OVERLAP,
-            length_function=len,
-            add_start_index=True,
-        )
-        chunks = text_splitter.split_documents(documents)
-        print(f"Split {len(documents)} documents into {len(chunks)} chunks")
-        return chunks
+        # add code to split documents
+        pass
 
     def create_vectorstore(self, chunks: List[Document], recreate: bool = False) -> None:
         """Create a vector store from document chunks"""
-        # Clear existing database if requested
-        if recreate and os.path.exists(self.chroma_path):
-            shutil.rmtree(self.chroma_path)
-            print(f"Removed existing database at {self.chroma_path}")
-
-        # Create and persist the vector store
-        self.vectorstore = Chroma.from_documents(
-            documents=chunks,
-            embedding=self.embedding_model,
-            persist_directory=self.chroma_path
-        )
-        self.vectorstore.persist()
+        # add code to save the chunks to our vector store
         print(f"Created and persisted vector store with {len(chunks)} chunks")
 
     def load_vectorstore(self) -> None:
         """Load an existing vector store"""
-        if not os.path.exists(self.chroma_path):
-            raise ValueError(f"Vector store not found at {self.chroma_path}")
-
-        self.vectorstore = Chroma(
-            persist_directory=self.chroma_path,
-            embedding_function=self.embedding_model
-        )
+        # Add code to load our vector store
         print(f"Loaded existing vector store from {self.chroma_path}")
 
     def query(self, query_text: str, k: int = 3) -> dict:
@@ -139,11 +113,11 @@ class HarryPotterRAG:
 
     def create_index(self, recreate: bool = False) -> None:
         """Create the complete index pipeline"""
-        documents = self.load_documents()
-        chunks = self.split_documents(documents)
-        self.create_vectorstore(chunks, recreate=recreate)
-        print("Index creation complete!")
-
+        # Create the index to store the embeddings
+        pass
+        
+        
+# This is where the action happens
 def main():
     """Main function to demonstrate RAG functionality"""
     print("🧙‍♂️ Harry Potter Gen Z - Retrieval Augmented Generation System 🧙‍♂️")
@@ -185,7 +159,7 @@ def main():
                 for i, doc in enumerate(result["source_documents"]):
                     print(f"\nSource {i+1}:")
                     print(f"From: {doc.metadata.get('source', 'Unknown')}")
-                    print(f"Content: {doc.page_content[:200]}...")
+                    print(f"Content: {doc.page_content[:300]}...")
 
         except Exception as e:
             print(f"Error: {str(e)}")
